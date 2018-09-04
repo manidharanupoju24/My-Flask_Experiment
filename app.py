@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -18,7 +18,8 @@ def home():
 @app.route('/post/<int:post_id>')  # /post/0 tag is flask syntax
 def post(post_id):
     post = posts.get(post_id)
-    return f"Post : {post['title']}, content : \n\n{post['content']}"
+    # return f"Post : {post['title']}, content : \n\n{post['content']}"
+    return render_template('post.html', post=post)
 
 
 if __name__ == '__main__':
