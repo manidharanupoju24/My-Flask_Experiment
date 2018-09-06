@@ -1,7 +1,6 @@
 from flask import Flask, render_template ,request, url_for, redirect
 
 
-
 app = Flask(__name__)
 posts = {
     0 : {
@@ -13,7 +12,8 @@ posts = {
 
 @app.route('/')
 def home():
-    return 'Hello, world!'
+    # return 'Hello, world!'
+    return render_template('home.html', posts=posts)
 
 
 @app.route('/post/<int:post_id>')  # /post/0 tag is flask syntax
@@ -29,7 +29,7 @@ def post(post_id):
 @app.route('/post/form')
 def form():
     return render_template('create.html') # clubbed this into single end point
-
+    
 '''
 
 
